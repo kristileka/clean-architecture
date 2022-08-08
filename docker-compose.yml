@@ -1,0 +1,13 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      - POSTGRES_DB=todo-db
+      - POSTGRES_USER=todo
+      - POSTGRES_PASSWORD=todo
+    expose:
+      - '5432'
