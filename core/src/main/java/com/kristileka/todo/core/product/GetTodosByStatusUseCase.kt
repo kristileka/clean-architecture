@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component
 class GetTodosByStatusUseCase(
     val todoService: TodoService
 ) :
-    UseCase<GetTodosByStatusUseCase.InputValues, GetTodosByStatusUseCase.OutputValues>() {
+    UseCase<GetTodosByStatusUseCase.Input, GetTodosByStatusUseCase.Output>() {
 
-    class InputValues(val status: String) : UseCase.InputValues
-    class OutputValues(val todos: List<TodoDto>) : UseCase.OutputValues
+    class Input(val status: String) : UseCase.Input
+    class Output(val todos: List<TodoDto>) : UseCase.Output
 
-    override fun execute(input: InputValues): OutputValues {
-        return OutputValues(todoService.findAllTodoByStatus(input.status))
+    override fun invoke(input: Input): Output {
+        return Output(todoService.findAllTodoByStatus(input.status))
     }
 }

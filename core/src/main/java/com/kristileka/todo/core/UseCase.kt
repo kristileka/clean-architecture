@@ -1,7 +1,7 @@
 package com.kristileka.todo.core
 
-abstract class UseCase<I : UseCase.InputValues?, O : UseCase.OutputValues?> {
-    abstract fun execute(input: I): O
-    interface InputValues
-    interface OutputValues
+abstract class UseCase<In : UseCase.Input?, Out : UseCase.Output?> {
+    abstract fun invoke(input: In): Out
+    interface Input
+    interface Output
 }

@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface TodoDataRepository : JpaRepository<TodoData, Long>, JpaSpecificationExecutor<TodoData> {
     fun findAllByStatus(status: String): List<TodoData>
+    override fun findAll(): List<TodoData>
 }

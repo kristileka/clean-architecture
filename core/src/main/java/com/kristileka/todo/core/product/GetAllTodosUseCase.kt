@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component
 @Component
 class GetAllTodosUseCase(
     private val todoService: TodoService
-) : UseCase<GetAllTodosUseCase.InputValues, GetAllTodosUseCase.OutputValues>() {
+) : UseCase<GetAllTodosUseCase.Input, GetAllTodosUseCase.Output>() {
 
-    class InputValues : UseCase.InputValues
+    class Input : UseCase.Input
 
-    class OutputValues(val todos: List<TodoDto>) : UseCase.OutputValues
+    class Output(val todos: List<TodoDto>) : UseCase.Output
 
-    override fun execute(input: InputValues): OutputValues {
-        return OutputValues(todoService.findAll())
+    override fun invoke(input: Input): Output {
+        return Output(todoService.findAll())
     }
 }

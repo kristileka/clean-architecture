@@ -5,18 +5,18 @@ import com.kristileka.todo.core.product.CreateTodoUseCase
 import com.kristileka.todo.core.product.GetAllTodosUseCase
 import com.kristileka.todo.core.product.GetTodosByStatusUseCase
 import com.kristileka.todo.domain.dto.TodoDto
-import org.springframework.stereotype.Component
+import org.springframework.web.bind.annotation.RestController
 
-@Component
-class TodosController(
+@RestController
+class TodoController(
     val useCaseInvoker: UseCaseInvoker,
     val getAllTodosUseCase: GetAllTodosUseCase,
     val getTodosByStatusUseCase: GetTodosByStatusUseCase,
     val createTodoUseCase: CreateTodoUseCase
-) : TodosResource {
+) : TodoResource {
     override fun getAllTodos(): List<TodoDto> {
         return useCaseInvoker.invoke(
-            getAllTodosUseCase, GetAllTodosUseCase.InputValues()
+            getAllTodosUseCase, GetAllTodosUseCase.Input()
         ) { output ->
             output.todos
         }
@@ -24,9 +24,7 @@ class TodosController(
 
     override fun getTodoByStatus(status: String): List<TodoDto> {
         return useCaseInvoker.invoke(
-            getTodosByStatusUseCase, GetTodosByStatusUseCase.InputValues(
-                status = status
-            )
+            getTodosByStatusUseCase, GetTodosByStatusUseCase.Input(status = status)
         ) { output ->
             output.todos
         }
@@ -34,7 +32,7 @@ class TodosController(
 
     override fun getTodoByStatus(todoDto: TodoDto): TodoDto {
         return useCaseInvoker.invoke(
-            createTodoUseCase, CreateTodoUseCase.InputValues(todoDto)
+            createTodoUseCase, CreateTodoUseCase.Input(todoDto)
         ) { output ->
             output.todo
         }

@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.kristileka.todo.core"
-version = "1.0-SNAPSHOT"
+version = "0.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
