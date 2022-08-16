@@ -16,11 +16,12 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation(project(":core"))
     implementation("org.springframework.integration:spring-integration-core")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-configuration-processor")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation(project(":core"))
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+
 }
 
 tasks.test {

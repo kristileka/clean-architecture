@@ -12,7 +12,6 @@ import javax.persistence.Id
 
 
 @Entity(name = "todo")
-//@Where(clause = "deletedAt=null")
 class TodoData {
 
     @Id

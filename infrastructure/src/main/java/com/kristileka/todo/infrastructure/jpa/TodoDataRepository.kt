@@ -4,6 +4,7 @@ import com.kristileka.todo.infrastructure.entities.TodoData
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor
 import org.springframework.stereotype.Repository
+import java.util.Arrays
 
 @Repository
 interface TodoDataRepository : JpaRepository<TodoData, Long>, JpaSpecificationExecutor<TodoData> {

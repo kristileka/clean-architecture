@@ -15,27 +15,21 @@ class TodoController(
     val createTodoUseCase: CreateTodoUseCase
 ) : TodoResource {
     override fun getAllTodos(): List<TodoDto> {
-        return useCaseInvoker.invoke(
+        return useCaseInvoker.execute(
             getAllTodosUseCase, GetAllTodosUseCase.Input()
-        ) { output ->
-            output.todos
-        }
+        ).todos
     }
 
     override fun getTodoByStatus(status: String): List<TodoDto> {
-        return useCaseInvoker.invoke(
+        return useCaseInvoker.execute(
             getTodosByStatusUseCase, GetTodosByStatusUseCase.Input(status = status)
-        ) { output ->
-            output.todos
-        }
+        ).todos
     }
 
     override fun getTodoByStatus(todoDto: TodoDto): TodoDto {
-        return useCaseInvoker.invoke(
+        return useCaseInvoker.execute(
             createTodoUseCase, CreateTodoUseCase.Input(todoDto)
-        ) { output ->
-            output.todo
-        }
+        ).todo
     }
 
 }

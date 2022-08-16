@@ -1,13 +1,10 @@
 package com.kristileka.todo.core
 
-import java.util.function.Function
-
 interface UseCaseInvoker {
-    fun <Value, In : UseCase.Input, Out : UseCase.Output> invoke(
+    fun <In : UseCase.Input, Out : UseCase.Output> execute(
         useCase: UseCase<In, Out>,
         input: In,
-        outMapper: Function<Out, Value>
-    ): Value
+    ): Out
 }
 
 

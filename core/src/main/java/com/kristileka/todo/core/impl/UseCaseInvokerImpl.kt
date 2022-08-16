@@ -7,11 +7,8 @@ import java.util.function.Function
 
 @Component
 class UseCaseInvokerImpl : UseCaseInvoker {
-    override fun <Value, In : UseCase.Input, Out : UseCase.Output> invoke(
-        useCase: UseCase<In, Out>,
-        input: In,
-        outMapper: Function<Out, Value>
-    ): Value {
-        return outMapper.apply(useCase.invoke(input))
+    override fun <In : UseCase.Input, Out : UseCase.Output>
+            execute(useCase: UseCase<In, Out>, input: In): Out {
+        return useCase.invoke(input)
     }
 }
