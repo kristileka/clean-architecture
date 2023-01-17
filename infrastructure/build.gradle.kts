@@ -18,13 +18,13 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.integration:spring-integration-core")
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("org.postgresql:postgresql")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.1.3")
+    implementation("org.springframework.integration:spring-integration-core")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework.boot:spring-boot-configuration-processor")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 }
 
 tasks.named<BootJar>("bootJar") {
