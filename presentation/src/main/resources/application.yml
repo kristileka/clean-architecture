@@ -2,9 +2,9 @@ server:
   port: 9000
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/todo-db
-    username: todo
-    password: todo
+    url: jdbc:postgresql://localhost:5432/library-db
+    username: library
+    password: library
     driver-class-name: org.postgresql.Driver
   jpa:
     generate-ddl: true

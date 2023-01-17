@@ -1,2 +1,2 @@
-rootProject.name = "todo"
+rootProject.name = "library"
 include("infrastructure", "application", "domain", "presentation")

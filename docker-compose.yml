@@ -6,8 +6,8 @@ services:
       - "5432:5432"
     restart: always
     environment:
-      - POSTGRES_DB=todo-db
-      - POSTGRES_USER=todo
-      - POSTGRES_PASSWORD=todo
+      - POSTGRES_DB=library-db
+      - POSTGRES_USER=library
+      - POSTGRES_PASSWORD=library
     expose:
       - '5432'
