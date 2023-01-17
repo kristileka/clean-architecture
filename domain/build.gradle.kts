@@ -8,7 +8,7 @@ plugins {
     kotlin("plugin.spring") version "1.6.21"
 }
 
-group = "com.kristileka.todo.domain"
+group = "kristileka.cleanarch"
 version = "1.0-SNAPSHOT"
 
 repositories {

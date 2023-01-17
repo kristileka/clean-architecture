@@ -1,2 +1,2 @@
 rootProject.name = "todo"
-include("infrastructure", "application", "domain", "core")
+include("infrastructure", "application", "domain", "presentation")

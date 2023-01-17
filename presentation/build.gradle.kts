@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     kotlin("jvm") version "1.7.10"
@@ -9,35 +8,19 @@ plugins {
 }
 
 group = "kristileka.cleanarch"
-version = "0.0.1-SNAPSHOT"
-
-java.sourceCompatibility = JavaVersion.VERSION_17
+version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.integration:spring-integration-core")
-    api("org.springframework.boot:spring-boot-starter-data-jpa")
-    runtimeOnly("org.postgresql:postgresql")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.1.3")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-}
-
-tasks.named<BootJar>("bootJar") {
-    enabled = false
-}
-tasks.named<Jar>("jar") {
-    enabled = true
-}
-
-dependencyManagement {
-    imports {
-        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-    }
+    implementation(project(":application"))
 }
 
 tasks.test {
