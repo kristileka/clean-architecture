@@ -10,11 +10,11 @@ class QueryBooksUseCase(
     private val bookService: BookService
 ) : UseCase<QueryBooksUseCase.Input, QueryBooksUseCase.Output>() {
 
-    class Input(val category: String?, val author: String?) : UseCase.Input
+    class Input(val category: String?, val author: String?, val name: String?) : UseCase.Input
 
     class Output(val books: List<Book>) : UseCase.Output
 
     override fun invoke(input: Input): Output {
-        return Output(bookService.queryBooks(input.category , input.author))
+        return Output(bookService.queryBooks(input.category, input.author, input.name))
     }
 }

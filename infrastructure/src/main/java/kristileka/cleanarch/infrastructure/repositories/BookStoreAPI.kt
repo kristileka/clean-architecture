@@ -35,8 +35,8 @@ class BookStoreAPI(
         return true
     }
 
-    override fun findAllByCategoryAndAuthor(category: String, author: String): List<Book> {
-        return bookRepository.findByCategoryAndAuthor(category, author).map {
+    override fun findAllByCategoryAndAuthor(category: String, author: String, name: String): List<Book> {
+        return bookRepository.findByCategoryAndAuthorAndName(category, author, name).map {
             it.toDomain()
         }
     }

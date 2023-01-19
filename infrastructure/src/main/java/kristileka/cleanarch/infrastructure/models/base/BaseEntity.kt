@@ -26,9 +26,9 @@ abstract class BaseEntity {
     @Column(name = "deleted_at")
     var deletedAt: LocalDateTime? = null
 
-    @PreUpdate
-    protected open fun preUpdate() {
-        this.updatedAt = LocalDateTime.now()
-    }
+//    @PreUpdate
+//    protected open fun preUpdate() {
+//        this.updatedAt = LocalDateTime.now()
+//    }
 
 }

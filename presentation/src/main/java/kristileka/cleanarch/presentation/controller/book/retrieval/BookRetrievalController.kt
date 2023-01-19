@@ -28,9 +28,9 @@ class BookRetrievalController(
         ).book.toREST()
     }
 
-    override fun queryBooks(author: String?, category: String?): List<BookREST> {
+    override fun queryBooks(author: String?, category: String?, name: String?): List<BookREST> {
         return useCaseInvoker.execute(
-            queryBooksUseCase, QueryBooksUseCase.Input(category, author)
+            queryBooksUseCase, QueryBooksUseCase.Input(category, author, name)
         ).books.map {
             it.toREST()
         }

@@ -1,9 +1,6 @@
 package kristileka.cleanarch.presentation.config
 
-import kristileka.cleanarch.domain.exceptions.BookNotFoundException
-import kristileka.cleanarch.domain.exceptions.RenterAlreadyHaveBook
-import kristileka.cleanarch.domain.exceptions.RenterDoesNotHaveBook
-import kristileka.cleanarch.domain.exceptions.RenterNotFoundException
+import kristileka.cleanarch.domain.exceptions.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -11,42 +8,26 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 
 import org.springframework.web.context.request.WebRequest
 import java.time.LocalDateTime
+import kotlin.reflect.typeOf
 
 
 @ControllerAdvice
 class ErrorHandling {
 
-    @ExceptionHandler(BookNotFoundException::class)
-    fun handleBookNotFound(ex: BookNotFoundException, request: WebRequest): ResponseEntity<Any> {
+    @ExceptionHandler(GeneralExceptions::class)
+    fun handleBookNotFound(ex: GeneralExceptions, request: WebRequest): ResponseEntity<Any> {
         val body = LinkedHashMap<String, Any>()
         body["timestamp"] = LocalDateTime.now()
         body["message"] = ex.message!!
-        return ResponseEntity(body, HttpStatus.NOT_FOUND)
+        return ResponseEntity(body, getStatusCode(ex))
     }
 
-    @ExceptionHandler(RenterNotFoundException::class)
-    fun handleRenterNotFound(ex: RenterNotFoundException, request: WebRequest): ResponseEntity<Any> {
-        val body = LinkedHashMap<String, Any>()
-        body["timestamp"] = LocalDateTime.now()
-        body["message"] = ex.message!!
-        return ResponseEntity(body, HttpStatus.NOT_FOUND)
+    private fun getStatusCode(ex: GeneralExceptions): HttpStatus {
+        return when (ex) {
+            is BookNotAvailable -> HttpStatus.GONE
+            is RenterAlreadyHaveBook -> HttpStatus.CONFLICT
+            is RenterDoesNotHaveBook -> HttpStatus.CONFLICT
+            else -> HttpStatus.NOT_FOUND
+        }
     }
-
-    @ExceptionHandler(RenterDoesNotHaveBook::class)
-    fun handleRenterDoesNotHaveBook(ex: RenterDoesNotHaveBook, request: WebRequest): ResponseEntity<Any> {
-        val body = LinkedHashMap<String, Any>()
-        body["timestamp"] = LocalDateTime.now()
-        body["message"] = ex.message!!
-        return ResponseEntity(body, HttpStatus.BAD_REQUEST)
-    }
-
-    @ExceptionHandler(RenterAlreadyHaveBook::class)
-    fun handleRenterAlreadyHasBook(ex: RenterAlreadyHaveBook, request: WebRequest): ResponseEntity<Any> {
-        val body = LinkedHashMap<String, Any>()
-        body["timestamp"] = LocalDateTime.now()
-        body["message"] = ex.message!!
-        return ResponseEntity(body, HttpStatus.BAD_REQUEST)
-    }
-
-
 }

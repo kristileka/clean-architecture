@@ -21,6 +21,7 @@ interface BookRetrievalResource {
     fun queryBooks(
         @RequestParam("author") author: String? = "",
         @RequestParam("category") category: String? = "",
+        @RequestParam("name") name: String? = "",
     ): List<BookREST>
 
     @GetMapping("/availability/{id}")
