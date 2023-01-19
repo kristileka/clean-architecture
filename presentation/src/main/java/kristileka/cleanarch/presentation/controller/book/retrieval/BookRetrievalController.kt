@@ -37,11 +37,11 @@ class BookRetrievalController(
     }
 
     override fun getBookAvailability(bookId: String): BookAvailabilityREST {
-        return BookAvailabilityREST(
-            useCaseInvoker.execute(
+        return BookAvailabilityREST().apply {
+            this.available = useCaseInvoker.execute(
                 getBookAvailabilityUseCase, GetBookAvailabilityUseCase.Input(bookId.toLong())
             ).available
-        )
+        }
     }
 
 }

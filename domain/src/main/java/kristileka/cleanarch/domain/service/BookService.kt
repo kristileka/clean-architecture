@@ -23,20 +23,18 @@ class BookService(
 
     fun getBookAvailability(id: Long): Boolean {
         val book = getBookById(id)
-        return book.quantity != null && book.quantity!! > 0
+        return book.quantity > 0
     }
 
     fun importBook(book: Book): Book {
-        val bookToImport = bookStoreAPI.getBookByName(book.name!!) ?: book.apply {
-            this.quantity = 1
-        }
+        val bookToImport = bookStoreAPI.getBookByName(book.name) ?: book
         bookToImport.apply {
-            this.quantity = this.quantity?.plus(1)
+            this.quantity += 1
         }
-        return bookStoreAPI.importBook(bookToImport)
+        return bookStoreAPI.save(bookToImport)
     }
 
     fun exportBook(bookId: Long): Boolean {
-        return bookStoreAPI.exportBook(bookId)
+        return bookStoreAPI.delete(bookId)
     }
 }

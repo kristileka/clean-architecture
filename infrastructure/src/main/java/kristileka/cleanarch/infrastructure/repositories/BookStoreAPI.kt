@@ -26,11 +26,11 @@ class BookStoreAPI(
         return bookRepository.findByName(name)?.toDomain()
     }
 
-    override fun importBook(book: Book): Book {
+    override fun save(book: Book): Book {
         return bookRepository.save(book.toEntity()).toDomain()
     }
 
-    override fun exportBook(bookId: Long): Boolean {
+    override fun delete(bookId: Long): Boolean {
         bookRepository.deleteById(bookId)
         return true
     }
@@ -40,4 +40,5 @@ class BookStoreAPI(
             it.toDomain()
         }
     }
+
 }
