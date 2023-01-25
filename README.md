@@ -1,4 +1,4 @@
-# Library Management System
+# Clean Architecture
 
 This is a library management system built using clean architecture and the Spring framework with Kotlin. It allows for
 the management of books, including querying for books, checking availability, exporting books and renting books.
@@ -10,7 +10,7 @@ The application is separated into four layers:
 - Presentation layer: handles the incoming HTTP requests and maps them to the appropriate use cases in the application
   layer.
 - Application layer: contains the use cases and use case invokers
-- Domain layer: contains the business logic, entities and data models for the application.
+- Domain layer: contains the business logic, entities and data models for the app.
 - Infrastructure layer: provides implementations for interfaces defined in the domain layer, such as interacting with a
   database.
 
@@ -26,17 +26,15 @@ The application is separated into four layers:
 
 ## Testing
 
-The application is well-tested with a code coverage of over 95%. Tests are written for all the modules in the
-application.
+The whole app is well-tested with a code coverage of over 95%. Tests are written for all the modules.
 
 ## How to run
 
-To run the application, you will need to have the following installed:
+To run it, you will need to have the following installed:
 
 - Java 17 or later
 - Kotlin
 - Gradle
-- A database management system (e.g., MySQL, PostgreSQL)
 - Docker
 
 Note: Before running the application for the first time, make sure to change the value of "
