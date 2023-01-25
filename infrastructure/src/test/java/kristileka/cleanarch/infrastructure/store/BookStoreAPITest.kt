@@ -14,8 +14,8 @@ import java.util.*
 class BookStoreAPITest {
 
     @Mock
-    private var bookRepository: BookRepository = Mockito.mock(BookRepository::class.java)
-    lateinit var bookStoreAPI: BookStoreAPI
+    private val bookRepository: BookRepository = Mockito.mock(BookRepository::class.java)
+    private lateinit var bookStoreAPI: BookStoreAPI
 
     @BeforeEach
     fun init() {

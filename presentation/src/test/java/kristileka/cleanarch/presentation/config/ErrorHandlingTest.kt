@@ -14,7 +14,7 @@ import org.springframework.web.context.request.WebRequest
 
 class ErrorHandlingTest {
 
-    private var webRequest: WebRequest = mockk()
+    private val webRequest: WebRequest = mockk()
 
     @Test
     fun handleGeneralExceptions() {

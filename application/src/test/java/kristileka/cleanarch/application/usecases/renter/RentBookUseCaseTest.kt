@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 class RentBookUseCaseTest {
     private val renterService = mockk<RenterService>()
     private val rentBookUseCase = RentBookUseCase(renterService)
-    var renter = Renter("", "")
+    private val renter = Renter("", "")
     private val mockedInput = RentBookUseCase.Input(renter, 1L)
     private val mockedOutput = RentBookUseCase.Output(renter)
 

@@ -13,8 +13,8 @@ import org.mockito.Mockito
 internal class RenterStoreAPITest {
 
     @Mock
-    private var renterRepository: RenterRepository = Mockito.mock(RenterRepository::class.java)
-    lateinit var renterStoreAPI: RenterStoreAPI
+    private val renterRepository: RenterRepository = Mockito.mock(RenterRepository::class.java)
+    private lateinit var renterStoreAPI: RenterStoreAPI
 
     @BeforeEach
     fun init() {
