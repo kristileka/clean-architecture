@@ -1,28 +1,27 @@
-package kristileka.cleanarch.infrastructure.repositories
+package kristileka.cleanarch.infrastructure.store
 
 import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.domain.store.IBookStoreAPI
-import kristileka.cleanarch.infrastructure.datasource.BookRepository
+import kristileka.cleanarch.infrastructure.repository.BookRepository
 import kristileka.cleanarch.infrastructure.mappers.BookEntityMapper.toDomain
 import kristileka.cleanarch.infrastructure.mappers.BookEntityMapper.toEntity
 import org.springframework.stereotype.Service
-import kotlin.jvm.optionals.getOrElse
 
 @Service
 class BookStoreAPI(
     val bookRepository: BookRepository
 ) : IBookStoreAPI {
 
-    override fun getBooks(): List<Book> {
+    override fun findAll(): List<Book> {
         return bookRepository.findAll().map { it.toDomain() }
     }
 
-    override fun getBookById(id: Long): Book? {
+    override fun findBookById(id: Long): Book? {
         val response = bookRepository.findById(id)
         return if (response.isPresent) response.get().toDomain() else null
     }
 
-    override fun getBookByName(name: String): Book? {
+    override fun findBookByName(name: String): Book? {
         return bookRepository.findByName(name)?.toDomain()
     }
 

@@ -15,12 +15,14 @@ repositories {
 }
 
 dependencies {
+    val mockkVersion = "1.13.3"
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.integration:spring-integration-core")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.mockk:mockk:${mockkVersion}")
 
     implementation(project(":application"))
 }

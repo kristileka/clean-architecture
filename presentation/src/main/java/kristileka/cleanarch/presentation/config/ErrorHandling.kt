@@ -15,14 +15,14 @@ import kotlin.reflect.typeOf
 class ErrorHandling {
 
     @ExceptionHandler(GeneralExceptions::class)
-    fun handleBookNotFound(ex: GeneralExceptions, request: WebRequest): ResponseEntity<Any> {
+    fun handleGeneralExceptions(ex: GeneralExceptions, request: WebRequest): ResponseEntity<Any> {
         val body = LinkedHashMap<String, Any>()
         body["timestamp"] = LocalDateTime.now()
         body["message"] = ex.message!!
         return ResponseEntity(body, getStatusCode(ex))
     }
 
-    private fun getStatusCode(ex: GeneralExceptions): HttpStatus {
+    fun getStatusCode(ex: GeneralExceptions): HttpStatus {
         return when (ex) {
             is BookNotAvailable -> HttpStatus.GONE
             is RenterAlreadyHaveBook -> HttpStatus.CONFLICT

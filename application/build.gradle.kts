@@ -27,6 +27,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     api(project(":infrastructure"))
+    val mockkVersion = "1.13.3"
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.mockk:mockk:${mockkVersion}")
 }
 
 tasks.named<BootJar>("bootJar") {

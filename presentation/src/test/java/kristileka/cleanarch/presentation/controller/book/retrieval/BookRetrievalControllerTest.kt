@@ -1,46 +1,106 @@
+import io.mockk.every
 import kristileka.cleanarch.application.base.UseCase
 import kristileka.cleanarch.application.base.UseCaseInvoker
-import kristileka.cleanarch.application.base.impl.UseCaseInvokerImpl
 import kristileka.cleanarch.application.usecases.book.GetAllBooksUseCase
 import kristileka.cleanarch.application.usecases.book.GetBookAvailabilityUseCase
 import kristileka.cleanarch.application.usecases.book.GetBookByIdUseCase
 import kristileka.cleanarch.application.usecases.book.QueryBooksUseCase
 import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.presentation.controller.book.retrieval.BookRetrievalController
-import kristileka.cleanarch.presentation.dto.book.BookREST
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.Mockito
-import org.mockito.junit.jupiter.MockitoExtension
+import io.mockk.mockk
+import kristileka.cleanarch.presentation.dto.book.BookAvailabilityREST
+import org.junit.jupiter.api.BeforeEach
 
-@ExtendWith(MockitoExtension::class)
 class BookRetrievalControllerTest {
 
 
-    private val useCaseInvoker = Mockito.mock(UseCaseInvoker::class.java)
-    private val getAllBooksUseCase = Mockito.mock(GetAllBooksUseCase::class.java)
-    private val getBookByIdUseCase = Mockito.mock(GetBookByIdUseCase::class.java)
-    private val getBookAvailabilityUseCase = Mockito.mock(GetBookAvailabilityUseCase::class.java)
-    private val queryBooksUseCase: QueryBooksUseCase = Mockito.mock(QueryBooksUseCase::class.java)
+    private val useCaseInvoker = mockk<UseCaseInvoker>()
+    private val getAllBooksUseCase = mockk<GetAllBooksUseCase>()
+    private val getBookByIdUseCase = mockk<GetBookByIdUseCase>()
+    private val getBookAvailabilityUseCase = mockk<GetBookAvailabilityUseCase>()
+    private val queryBooksUseCase = mockk<QueryBooksUseCase>()
+
+    private lateinit var controller: BookRetrievalController
+
+    @BeforeEach
+    fun init() {
+        controller = BookRetrievalController(
+            useCaseInvoker, queryBooksUseCase, getAllBooksUseCase, getBookByIdUseCase, getBookAvailabilityUseCase
+        )
+    }
+
     @Test
     fun `get all books`() {
         val books = listOf(
-            Book(1, "The Catcher in the Rye", "J.D. Salinger", 1), Book(2, "To Kill a Mockingbird", "Harper Lee", 1)
+            Book(1, "The Catcher in the Rye", "J.D. Salinger", 1),
+            Book(2, "To Kill a Mockingbird", "Harper Lee", 1)
         )
-        var input = QueryBooksUseCase.Input("J.D. Salinger", "Novel", null)
-        Mockito.`when`(
-            useCaseInvoker.execute(queryBooksUseCase,input )
-        ).thenReturn(QueryBooksUseCase.Output(books))
+        val output = GetAllBooksUseCase.Output(books)
+        every {
+            useCaseInvoker.execute(getAllBooksUseCase, any())
+        } returns output
 
-        val controller = BookRetrievalController(
-            useCaseInvoker, queryBooksUseCase, getAllBooksUseCase, getBookByIdUseCase, getBookAvailabilityUseCase
-        )
-        val result = controller.queryBooks("J.D. Salinger", "Novel", null)
+        val result = controller.getAllBooks()
         assertEquals(result.size, books.size)
         assertEquals(result.first().name, books.first().name)
         assertEquals(result.first().id, books.first().id)
     }
+
+    @Test
+    fun `query all books`() {
+        val books = listOf(
+            Book(1, "The Catcher in the Rye", "J.D. Salinger", 1),
+            Book(2, "To Kill a Mockingbird", "Harper Lee", 1)
+        )
+        val output = QueryBooksUseCase.Output(books)
+        every {
+            useCaseInvoker.execute(queryBooksUseCase, any())
+        } returns output
+
+
+        val result = controller.queryBooks("a", "a", "a")
+        assertEquals(result.size, books.size)
+        assertEquals(result.first().name, books.first().name)
+        assertEquals(result.first().id, books.first().id)
+    }
+
+    @Test
+    fun `get book by id`() {
+        val book =
+            Book(1, "The Catcher in the Rye", "J.D. Salinger", 1)
+        val output = GetBookByIdUseCase.Output(book)
+        every {
+            useCaseInvoker.execute(getBookByIdUseCase, any())
+        } returns output
+
+        val result = controller.getBookById("1")
+        assertEquals(result.name, book.name)
+        assertEquals(result.id, book.id)
+    }
+
+    @Test
+    fun `get book availability false `() {
+        val output = GetBookAvailabilityUseCase.Output(false)
+        every {
+            useCaseInvoker.execute(getBookAvailabilityUseCase, any())
+        } returns output
+
+        val result = controller.getBookAvailability("1")
+        assertEquals(result.available, false)
+    }
+
+    @Test
+    fun `get book availability true `() {
+        val output = GetBookAvailabilityUseCase.Output(true)
+        every {
+            useCaseInvoker.execute(getBookAvailabilityUseCase, any())
+        } returns output
+
+        val result = controller.getBookAvailability("1")
+        assertEquals(result.available, true)
+    }
+
+
 }

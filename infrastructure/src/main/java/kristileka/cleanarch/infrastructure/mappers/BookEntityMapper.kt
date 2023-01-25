@@ -18,5 +18,4 @@ object BookEntityMapper {
             it.categories = this.categories
         }
     }
-
 }

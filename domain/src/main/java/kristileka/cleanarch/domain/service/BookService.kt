@@ -14,11 +14,11 @@ class BookService(
     }
 
     fun getBooks(): List<Book> {
-        return bookStoreAPI.getBooks()
+        return bookStoreAPI.findAll()
     }
 
     fun getBookById(id: Long): Book {
-        return bookStoreAPI.getBookById(id) ?: throw BookNotFoundException()
+        return bookStoreAPI.findBookById(id) ?: throw BookNotFoundException()
     }
 
     fun getBookAvailability(id: Long): Boolean {
@@ -27,7 +27,7 @@ class BookService(
     }
 
     fun importBook(book: Book): Book {
-        val bookToImport = bookStoreAPI.getBookByName(book.name) ?: book
+        val bookToImport = bookStoreAPI.findBookByName(book.name) ?: book
         bookToImport.apply {
             this.quantity += 1
         }

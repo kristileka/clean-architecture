@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @EnableJpaRepositories(basePackages = ["kristileka.cleanarch.*"])
 @ComponentScan("kristileka.cleanarch.*")
 @EntityScan("kristileka.cleanarch.*")
-@EnableJpaAuditing()
+@EnableJpaAuditing
 class LibraryApplication
 
 fun main(args: Array<String>) {

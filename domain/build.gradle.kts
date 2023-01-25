@@ -20,6 +20,10 @@ dependencies {
     implementation("org.springframework.integration:spring-integration-core")
     implementation("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    val mockkVersion = "1.13.3"
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.mockk:mockk:${mockkVersion}")
 }
 
 tasks.named<BootJar>("bootJar") {

@@ -1,10 +1,9 @@
-package kristileka.cleanarch.infrastructure.datasource
+package kristileka.cleanarch.infrastructure.repository
 
 import kristileka.cleanarch.infrastructure.models.BookEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
-import java.awt.print.Book
 
 @Repository
 interface BookRepository : JpaRepository<BookEntity, Long> {

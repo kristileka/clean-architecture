@@ -14,6 +14,6 @@ object BookMapper {
     }
 
     fun BookREST.toDomain(): Book {
-        return Book(name = this.name, author = this.author, categories = this.categories)
+        return Book(this.id, name = this.name, author = this.author, categories = this.categories)
     }
 }

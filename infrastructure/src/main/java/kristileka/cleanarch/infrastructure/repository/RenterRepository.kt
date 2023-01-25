@@ -1,11 +1,9 @@
-package kristileka.cleanarch.infrastructure.datasource
+package kristileka.cleanarch.infrastructure.repository
 
 import kristileka.cleanarch.infrastructure.models.RenterEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
-import java.util.*
-import javax.print.attribute.IntegerSyntax
 import javax.transaction.Transactional
 
 interface RenterRepository : JpaRepository<RenterEntity, Long> {

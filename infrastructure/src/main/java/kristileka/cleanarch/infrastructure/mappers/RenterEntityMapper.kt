@@ -28,7 +28,7 @@ object RenterEntityMapper {
         }
     }
 
-    private fun RentedBookEntity.toDomain(): RentedBook {
+    fun RentedBookEntity.toDomain(): RentedBook {
         return RentedBook(this.book?.toDomain(), this.returnDate, this.rentDate)
     }
 
