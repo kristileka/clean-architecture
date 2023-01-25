@@ -1,11 +1,11 @@
 package kristileka.cleanarch.presentation.dto.renter
 
 import io.mockk.mockk
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class RenterRESTTest {
-    private val renter = RenterREST();
+    private val renter = RenterREST()
     private val mockedRentedBook = mockk<RentedBookREST>()
 
     @Test

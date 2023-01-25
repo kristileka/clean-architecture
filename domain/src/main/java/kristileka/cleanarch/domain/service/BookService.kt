@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class BookService(
-    val bookStoreAPI: IBookStoreAPI
+    val bookStoreAPI: IBookStoreAPI,
 ) {
     fun queryBooks(category: String?, author: String?, name: String?): List<Book> {
         return bookStoreAPI.findAllByCategoryAndAuthor(category ?: "", author ?: "", name ?: "")

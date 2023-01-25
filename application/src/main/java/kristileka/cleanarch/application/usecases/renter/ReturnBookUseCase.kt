@@ -5,10 +5,9 @@ import kristileka.cleanarch.domain.model.Renter
 import kristileka.cleanarch.domain.service.RenterService
 import org.springframework.stereotype.Component
 
-
 @Component
 class ReturnBookUseCase(
-    val renterService: RenterService
+    val renterService: RenterService,
 ) :
     UseCase<ReturnBookUseCase.Input, ReturnBookUseCase.Output>() {
 

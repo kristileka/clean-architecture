@@ -2,14 +2,14 @@ package kristileka.cleanarch.infrastructure.store
 
 import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.domain.store.IBookStoreAPI
-import kristileka.cleanarch.infrastructure.repository.BookRepository
 import kristileka.cleanarch.infrastructure.mappers.BookEntityMapper.toDomain
 import kristileka.cleanarch.infrastructure.mappers.BookEntityMapper.toEntity
+import kristileka.cleanarch.infrastructure.repository.BookRepository
 import org.springframework.stereotype.Service
 
 @Service
 class BookStoreAPI(
-    val bookRepository: BookRepository
+    val bookRepository: BookRepository,
 ) : IBookStoreAPI {
 
     override fun findAll(): List<Book> {
@@ -39,5 +39,4 @@ class BookStoreAPI(
             it.toDomain()
         }
     }
-
 }

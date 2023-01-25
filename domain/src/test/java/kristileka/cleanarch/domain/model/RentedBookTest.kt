@@ -1,9 +1,7 @@
 package kristileka.cleanarch.domain.model
 
 import io.mockk.mockk
-import kristileka.cleanarch.domain.model.Book
-import kristileka.cleanarch.domain.model.RentedBook
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
@@ -29,4 +27,3 @@ class RentedBookTest {
         assertEquals(LocalDate.now().plusDays(30), copiedRentedBook.bookReturnDate)
     }
 }
-

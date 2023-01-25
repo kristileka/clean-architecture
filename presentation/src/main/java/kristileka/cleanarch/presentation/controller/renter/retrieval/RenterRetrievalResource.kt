@@ -12,7 +12,6 @@ interface RenterRetrievalResource {
 
     @GetMapping("/{id}")
     fun getRenterById(
-        @PathVariable("id") renterId: String
+        @PathVariable("id") renterId: String,
     ): RenterREST
-
 }

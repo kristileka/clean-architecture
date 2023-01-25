@@ -11,11 +11,10 @@ import kristileka.cleanarch.domain.model.RentedBook
 import kristileka.cleanarch.domain.model.Renter
 import kristileka.cleanarch.domain.store.IBookStoreAPI
 import kristileka.cleanarch.domain.store.IRenterStoreAPI
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.util.Assert
 
 internal class RenterServiceTest {
     private val renterStoreAPI: IRenterStoreAPI = mockk<IRenterStoreAPI>()
@@ -30,10 +29,9 @@ internal class RenterServiceTest {
 
     @Test
     fun `Get All Renters`() {
-
         val expectedRenters = listOf(
             Renter("asd", "Renter", mutableListOf(mockk<RentedBook>())),
-            Renter("ads", "Renter", mutableListOf(mockk<RentedBook>()))
+            Renter("ads", "Renter", mutableListOf(mockk<RentedBook>())),
         )
 
         every {
@@ -48,8 +46,6 @@ internal class RenterServiceTest {
 
     @Test
     fun `Get Renter By Id`() {
-
-
         val expectedRenter = Renter("asd", "Renter1", mutableListOf(mockk<RentedBook>()))
 
         every {
@@ -64,7 +60,6 @@ internal class RenterServiceTest {
 
     @Test
     fun `Rent Book Error Book Not Found`() {
-
         val expectedRenter = Renter("test", "Renter1", mutableListOf(mockk<RentedBook>()))
         every {
             renterStoreAPI.findRenterById("test")
@@ -81,7 +76,6 @@ internal class RenterServiceTest {
 
     @Test
     fun `Rent Book Error Book Not Available`() {
-
         val expectedRenter = Renter("test", "Renter1", mutableListOf(mockk<RentedBook>()))
         val expectedBook = Book(1, "asd", "asd", 0)
 
@@ -100,13 +94,14 @@ internal class RenterServiceTest {
 
     @Test
     fun `Rent Book Error Already have book`() {
-
         val expectedRenter = Renter(
-            "test", "Renter1", mutableListOf(
+            "test",
+            "Renter1",
+            mutableListOf(
                 RentedBook(
-                    Book(1, "asd", "asd", 1)
-                )
-            )
+                    Book(1, "asd", "asd", 1),
+                ),
+            ),
         )
         val expectedBook = Book(1, "asd", "asd", 1)
 
@@ -122,11 +117,13 @@ internal class RenterServiceTest {
     @Test
     fun `Rent Book Success`() {
         val expectedRenter = Renter(
-            "test", "Renter1", mutableListOf(
+            "test",
+            "Renter1",
+            mutableListOf(
                 RentedBook(
-                    Book(2, "asd", "asd", 1)
-                )
-            )
+                    Book(2, "asd", "asd", 1),
+                ),
+            ),
         )
         val expectedBook = Book(1, "asd", "asd", 1)
 
@@ -169,11 +166,13 @@ internal class RenterServiceTest {
     @Test
     fun `Return Book Error Renter Doesn't Have Book`() {
         val expectedRenter = Renter(
-            "test", "Renter1", mutableListOf(
+            "test",
+            "Renter1",
+            mutableListOf(
                 RentedBook(
-                    Book(2, "asd", "asd", 1)
-                )
-            )
+                    Book(2, "asd", "asd", 1),
+                ),
+            ),
         )
         val expectedBook = Book(1, "asd", "asd", 1)
 
@@ -189,11 +188,13 @@ internal class RenterServiceTest {
     @Test
     fun `Return Book`() {
         val expectedRenter = Renter(
-            "test", "Renter1", mutableListOf(
+            "test",
+            "Renter1",
+            mutableListOf(
                 RentedBook(
-                    Book(1, "asd", "asd", 1)
-                )
-            )
+                    Book(1, "asd", "asd", 1),
+                ),
+            ),
         )
         val expectedBook = Book(1, "asd", "asd", 1)
 

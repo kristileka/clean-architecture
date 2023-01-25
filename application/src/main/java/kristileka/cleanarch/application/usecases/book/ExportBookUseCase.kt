@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class ExportBookUseCase(
-    private val bookService: BookService
+    private val bookService: BookService,
 ) : UseCase<ExportBookUseCase.Input, ExportBookUseCase.Output>() {
 
     class Input(val bookId: Long) : UseCase.Input

@@ -7,8 +7,8 @@ import kristileka.cleanarch.domain.exceptions.GeneralExceptions
 import kristileka.cleanarch.domain.exceptions.RenterAlreadyHaveBook
 import kristileka.cleanarch.domain.exceptions.RenterDoesNotHaveBook
 import kristileka.cleanarch.domain.exceptions.RenterNotFoundException
-import org.junit.jupiter.api.Assertions.*
-import  org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
 import org.springframework.web.context.request.WebRequest
 
@@ -48,7 +48,6 @@ class ErrorHandlingTest {
         assertEquals(result.statusCode, HttpStatus.CONFLICT)
     }
 
-
     @Test
     fun handleRenterDoesNotHaveBook() {
         val errorHandling = ErrorHandling()
@@ -64,7 +63,6 @@ class ErrorHandlingTest {
         val result = errorHandling.handleGeneralExceptions(bookNotFoundException, webRequest)
         assertEquals(result.statusCode, HttpStatus.GONE)
     }
-
 
     @Test
     fun getStatusCode() {

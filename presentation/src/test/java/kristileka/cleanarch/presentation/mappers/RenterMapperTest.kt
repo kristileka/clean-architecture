@@ -20,9 +20,9 @@ class RenterMapperTest {
             RentedBook(
                 Book(1, "n", "n"),
                 bookRentDate = LocalDate.of(2022, 1, 1),
-                bookReturnDate = LocalDate.of(2022, 2, 1)
-            )
-        )
+                bookReturnDate = LocalDate.of(2022, 2, 1),
+            ),
+        ),
     )
 
     @Test
@@ -38,11 +38,13 @@ class RenterMapperTest {
         val renterREST = RenterREST().also {
             it.id = renter.id
             it.name = renter.name
-            it.rentedBooks = listOf(RentedBookREST().apply {
-                this.book = Book(1, "n", "n").toREST()
-                this.bookRentDate = LocalDate.of(2022, 1, 1)
-                this.bookReturnDate = LocalDate.of(2022, 2, 1)
-            })
+            it.rentedBooks = listOf(
+                RentedBookREST().apply {
+                    this.book = Book(1, "n", "n").toREST()
+                    this.bookRentDate = LocalDate.of(2022, 1, 1)
+                    this.bookReturnDate = LocalDate.of(2022, 2, 1)
+                },
+            )
         }
         val domainRenter = renterREST.toDomain()
         assertEquals(renter.id, domainRenter.id)

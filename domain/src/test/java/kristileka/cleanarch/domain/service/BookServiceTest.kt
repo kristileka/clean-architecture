@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-
 class BookServiceTest {
     private val bookStoreAPI: IBookStoreAPI = mockk()
     private lateinit var bookService: BookService
@@ -24,7 +23,7 @@ class BookServiceTest {
     fun `Get All Books`() {
         val expectedBooks = listOf(
             Book(1L, "Book1", "Author1", 10, listOf("Science", "Fiction")),
-            Book(2L, "Book2", "Author2", 5, listOf("Science"))
+            Book(2L, "Book2", "Author2", 5, listOf("Science")),
         )
 
         every {
@@ -41,7 +40,7 @@ class BookServiceTest {
     fun `Query Books`() {
         val expectedBooks = listOf(
             Book(1L, "Book1", "Author1", 10, listOf("Science", "Fiction")),
-            Book(2L, "Book2", "Author2", 5, listOf("Science"))
+            Book(2L, "Book2", "Author2", 5, listOf("Science")),
         )
 
         every {
@@ -116,5 +115,4 @@ class BookServiceTest {
         val result = bookService.exportBook(bookId)
         assertTrue(result)
     }
-
 }

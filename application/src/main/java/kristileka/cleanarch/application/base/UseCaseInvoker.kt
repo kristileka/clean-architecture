@@ -6,6 +6,3 @@ interface UseCaseInvoker {
         input: In,
     ): Out
 }
-
-
-

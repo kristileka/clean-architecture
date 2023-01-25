@@ -3,18 +3,14 @@ package kristileka.cleanarch.presentation.controller.renter.manage
 import io.mockk.every
 import io.mockk.mockk
 import kristileka.cleanarch.application.base.UseCaseInvoker
-import kristileka.cleanarch.application.usecases.book.ImportBookUseCase
 import kristileka.cleanarch.application.usecases.renter.RentBookUseCase
 import kristileka.cleanarch.application.usecases.renter.ReturnBookUseCase
 import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.domain.model.RentedBook
 import kristileka.cleanarch.domain.model.Renter
-import kristileka.cleanarch.presentation.controller.book.manage.BookManageController
-import kristileka.cleanarch.presentation.mappers.BookMapper.toREST
 import kristileka.cleanarch.presentation.mappers.RenterMapper.toREST
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
-
 import org.junit.jupiter.api.Test
 
 internal class RenterManageControllerTest {
@@ -27,7 +23,9 @@ internal class RenterManageControllerTest {
     @BeforeEach
     fun init() {
         controller = RenterManageController(
-            useCaseInvoker, rentBookUseCase, returnBookUseCase,
+            useCaseInvoker,
+            rentBookUseCase,
+            returnBookUseCase,
         )
     }
 

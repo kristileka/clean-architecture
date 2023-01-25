@@ -14,7 +14,7 @@ interface BookRetrievalResource {
 
     @GetMapping("/{id}")
     fun getBookById(
-        @PathVariable("id") bookId: String
+        @PathVariable("id") bookId: String,
     ): BookREST
 
     @GetMapping("/query")
@@ -26,6 +26,6 @@ interface BookRetrievalResource {
 
     @GetMapping("/availability/{id}")
     fun getBookAvailability(
-        @PathVariable("id") bookId: String
+        @PathVariable("id") bookId: String,
     ): BookAvailabilityREST
 }

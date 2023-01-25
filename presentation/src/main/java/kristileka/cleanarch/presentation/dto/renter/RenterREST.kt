@@ -1,6 +1,5 @@
 package kristileka.cleanarch.presentation.dto.renter
 
-
 class RenterREST {
     var id: String? = null
     var name: String? = null

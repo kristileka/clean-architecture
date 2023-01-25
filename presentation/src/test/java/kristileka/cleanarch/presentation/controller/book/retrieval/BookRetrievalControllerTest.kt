@@ -1,5 +1,5 @@
 import io.mockk.every
-import kristileka.cleanarch.application.base.UseCase
+import io.mockk.mockk
 import kristileka.cleanarch.application.base.UseCaseInvoker
 import kristileka.cleanarch.application.usecases.book.GetAllBooksUseCase
 import kristileka.cleanarch.application.usecases.book.GetBookAvailabilityUseCase
@@ -8,13 +8,10 @@ import kristileka.cleanarch.application.usecases.book.QueryBooksUseCase
 import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.presentation.controller.book.retrieval.BookRetrievalController
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
-import io.mockk.mockk
-import kristileka.cleanarch.presentation.dto.book.BookAvailabilityREST
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 class BookRetrievalControllerTest {
-
 
     private val useCaseInvoker = mockk<UseCaseInvoker>()
     private val getAllBooksUseCase = mockk<GetAllBooksUseCase>()
@@ -27,7 +24,11 @@ class BookRetrievalControllerTest {
     @BeforeEach
     fun init() {
         controller = BookRetrievalController(
-            useCaseInvoker, queryBooksUseCase, getAllBooksUseCase, getBookByIdUseCase, getBookAvailabilityUseCase
+            useCaseInvoker,
+            queryBooksUseCase,
+            getAllBooksUseCase,
+            getBookByIdUseCase,
+            getBookAvailabilityUseCase,
         )
     }
 
@@ -35,7 +36,7 @@ class BookRetrievalControllerTest {
     fun `get all books`() {
         val books = listOf(
             Book(1, "The Catcher in the Rye", "J.D. Salinger", 1),
-            Book(2, "To Kill a Mockingbird", "Harper Lee", 1)
+            Book(2, "To Kill a Mockingbird", "Harper Lee", 1),
         )
         val output = GetAllBooksUseCase.Output(books)
         every {
@@ -52,13 +53,12 @@ class BookRetrievalControllerTest {
     fun `query all books`() {
         val books = listOf(
             Book(1, "The Catcher in the Rye", "J.D. Salinger", 1),
-            Book(2, "To Kill a Mockingbird", "Harper Lee", 1)
+            Book(2, "To Kill a Mockingbird", "Harper Lee", 1),
         )
         val output = QueryBooksUseCase.Output(books)
         every {
             useCaseInvoker.execute(queryBooksUseCase, any())
         } returns output
-
 
         val result = controller.queryBooks("a", "a", "a")
         assertEquals(result.size, books.size)
@@ -101,6 +101,4 @@ class BookRetrievalControllerTest {
         val result = controller.getBookAvailability("1")
         assertEquals(result.available, true)
     }
-
-
 }

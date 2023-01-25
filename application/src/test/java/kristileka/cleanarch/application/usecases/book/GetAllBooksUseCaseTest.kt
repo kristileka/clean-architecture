@@ -3,7 +3,7 @@ package kristileka.cleanarch.application.usecases.book
 import io.mockk.every
 import io.mockk.mockk
 import kristileka.cleanarch.domain.service.BookService
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class GetAllBooksUseCaseTest {

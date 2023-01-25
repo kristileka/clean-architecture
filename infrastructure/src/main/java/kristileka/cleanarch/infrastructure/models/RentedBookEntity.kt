@@ -3,13 +3,15 @@ package kristileka.cleanarch.infrastructure.models
 import kristileka.cleanarch.infrastructure.models.base.BaseEntity
 import org.hibernate.annotations.SQLDelete
 import org.hibernate.annotations.Where
-import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.LastModifiedDate
-import java.lang.Boolean
 import java.time.LocalDate
-import java.time.LocalDateTime
-import javax.persistence.*
-
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.OneToOne
 
 @Entity(name = "rented_book")
 @SQLDelete(sql = "UPDATE rented_book SET deleted_at=now() WHERE id=?")
@@ -27,5 +29,4 @@ class RentedBookEntity : BaseEntity() {
     var rentDate: LocalDate? = LocalDate.now()
 
     var returnDate: LocalDate? = LocalDate.now().plusDays(15)
-
 }

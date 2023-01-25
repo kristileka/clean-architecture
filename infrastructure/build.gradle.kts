@@ -26,7 +26,7 @@ dependencies {
     val mockkVersion = "1.13.3"
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.mockk:mockk:${mockkVersion}")
+    testImplementation("io.mockk:mockk:$mockkVersion")
     implementation("org.springframework.boot:spring-boot-configuration-processor")
     api(project(":domain"))
 }

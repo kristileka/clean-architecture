@@ -12,7 +12,7 @@ class BookMapperTest {
         id = 1,
         name = "The Great Gatsby",
         author = "F. Scott Fitzgerald",
-        categories = listOf("Fiction", "Classics")
+        categories = listOf("Fiction", "Classics"),
     )
 
     @Test

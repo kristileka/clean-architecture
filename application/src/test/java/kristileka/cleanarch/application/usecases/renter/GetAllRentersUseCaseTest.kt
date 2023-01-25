@@ -3,7 +3,7 @@ package kristileka.cleanarch.application.usecases.renter
 import io.mockk.every
 import io.mockk.mockk
 import kristileka.cleanarch.domain.service.RenterService
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class GetAllRentersUseCaseTest {

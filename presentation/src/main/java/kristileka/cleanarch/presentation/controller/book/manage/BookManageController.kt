@@ -16,19 +16,19 @@ class BookManageController(
     val exportBookUseCase: ExportBookUseCase,
 ) : BookManageResource {
 
-
     override fun importBook(book: BookREST): BookREST {
         return useCaseInvoker.execute(
-            importBookUseCase, ImportBookUseCase.Input(book.toDomain())
+            importBookUseCase,
+            ImportBookUseCase.Input(book.toDomain()),
         ).book.toREST()
     }
 
     override fun exportBook(bookId: String): BookExportREST {
         return BookExportREST().apply {
             this.exported = useCaseInvoker.execute(
-                exportBookUseCase, ExportBookUseCase.Input(bookId.toLong())
+                exportBookUseCase,
+                ExportBookUseCase.Input(bookId.toLong()),
             ).exported
         }
-
     }
 }

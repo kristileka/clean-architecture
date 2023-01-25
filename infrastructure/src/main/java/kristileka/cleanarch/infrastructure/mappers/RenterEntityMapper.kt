@@ -31,6 +31,4 @@ object RenterEntityMapper {
     fun RentedBookEntity.toDomain(): RentedBook {
         return RentedBook(this.book?.toDomain(), this.returnDate, this.rentDate)
     }
-
-
 }

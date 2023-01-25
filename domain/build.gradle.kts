@@ -15,7 +15,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     implementation("org.springframework.integration:spring-integration-core")
     implementation("org.springframework.boot:spring-boot-configuration-processor")
@@ -23,7 +22,7 @@ dependencies {
     val mockkVersion = "1.13.3"
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.mockk:mockk:${mockkVersion}")
+    testImplementation("io.mockk:mockk:$mockkVersion")
 }
 
 tasks.named<BootJar>("bootJar") {
@@ -38,7 +37,6 @@ dependencyManagement {
         mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
     }
 }
-
 
 tasks.test {
     useJUnitPlatform()

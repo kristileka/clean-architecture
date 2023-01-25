@@ -18,7 +18,6 @@ interface BookManageResource {
 
     @DeleteMapping("/book/{id}")
     fun exportBook(
-        @PathVariable("id") bookId: String
+        @PathVariable("id") bookId: String,
     ): BookExportREST
-
 }

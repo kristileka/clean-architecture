@@ -14,7 +14,8 @@ interface RenterRepository : JpaRepository<RenterEntity, Long> {
         """DELETE from rented_book
 where book_id = ?1
 and renter_id = ?2
-            """, nativeQuery = true
+            """,
+        nativeQuery = true,
     )
     @Transactional
     fun returnBook(bookId: Long, renterId: String): Int?

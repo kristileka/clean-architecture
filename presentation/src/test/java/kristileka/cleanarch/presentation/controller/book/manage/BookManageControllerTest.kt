@@ -4,21 +4,14 @@ import io.mockk.every
 import io.mockk.mockk
 import kristileka.cleanarch.application.base.UseCaseInvoker
 import kristileka.cleanarch.application.usecases.book.ExportBookUseCase
-import kristileka.cleanarch.application.usecases.book.GetAllBooksUseCase
-import kristileka.cleanarch.application.usecases.book.GetBookAvailabilityUseCase
-import kristileka.cleanarch.application.usecases.book.GetBookByIdUseCase
 import kristileka.cleanarch.application.usecases.book.ImportBookUseCase
-import kristileka.cleanarch.application.usecases.book.QueryBooksUseCase
-import kristileka.cleanarch.application.usecases.renter.ReturnBookUseCase
 import kristileka.cleanarch.domain.model.Book
-import kristileka.cleanarch.presentation.controller.book.retrieval.BookRetrievalController
 import kristileka.cleanarch.presentation.mappers.BookMapper.toREST
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 internal class BookManageControllerTest {
-
 
     private val useCaseInvoker = mockk<UseCaseInvoker>()
     private val importBookUseCase = mockk<ImportBookUseCase>()
@@ -28,7 +21,9 @@ internal class BookManageControllerTest {
     @BeforeEach
     fun init() {
         controller = BookManageController(
-            useCaseInvoker, importBookUseCase, exportBookUseCase,
+            useCaseInvoker,
+            importBookUseCase,
+            exportBookUseCase,
         )
     }
 
@@ -49,7 +44,6 @@ internal class BookManageControllerTest {
         assertEquals(result.categories, book.categories)
     }
 
-
     @Test
     fun `export book`() {
         val output = ExportBookUseCase.Output(true)
@@ -60,5 +54,4 @@ internal class BookManageControllerTest {
         val result = controller.exportBook("1")
         assertEquals(result.exported, true)
     }
-
 }

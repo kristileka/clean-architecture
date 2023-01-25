@@ -6,7 +6,7 @@ import kristileka.cleanarch.infrastructure.mappers.RenterEntityMapper.toDomain
 import kristileka.cleanarch.infrastructure.mappers.RenterEntityMapper.toEntity
 import kristileka.cleanarch.infrastructure.models.RentedBookEntity
 import kristileka.cleanarch.infrastructure.models.RenterEntity
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
@@ -15,7 +15,9 @@ internal class RenterEntityMapperTest {
     @Test
     fun `Test Renter from Domain to Entity`() {
         val renterDomain = Renter(
-            "test1", "test2", mutableListOf()
+            "test1",
+            "test2",
+            mutableListOf(),
         )
         val renterEntity = renterDomain.toEntity()
         assertEquals(renterEntity.id, renterDomain.id)

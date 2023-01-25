@@ -3,7 +3,12 @@ package kristileka.cleanarch.infrastructure.models
 import kristileka.cleanarch.infrastructure.models.base.BaseEntity
 import org.hibernate.annotations.SQLDelete
 import org.hibernate.annotations.Where
-import javax.persistence.*
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.OneToMany
 
 @Entity(name = "renter")
 @SQLDelete(sql = "UPDATE renter SET deleted_at=now() WHERE id=?")
@@ -18,9 +23,8 @@ class RenterEntity : BaseEntity() {
 
     @OneToMany(
         cascade = [CascadeType.ALL],
-        orphanRemoval = true
+        orphanRemoval = true,
     )
     @JoinColumn(name = "renter_id")
     var rentedBooks: MutableList<RentedBookEntity> = mutableListOf()
-
 }

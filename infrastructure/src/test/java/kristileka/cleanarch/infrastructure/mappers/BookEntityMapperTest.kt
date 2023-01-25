@@ -4,8 +4,7 @@ import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.infrastructure.mappers.BookEntityMapper.toDomain
 import kristileka.cleanarch.infrastructure.mappers.BookEntityMapper.toEntity
 import kristileka.cleanarch.infrastructure.models.BookEntity
-import org.junit.jupiter.api.Assertions.*
-
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class BookEntityMapperTest {

@@ -11,13 +11,12 @@ interface RenterManageResource {
     @PostMapping("/rent/{bookId}")
     fun rentBook(
         @PathVariable("bookId") bookId: String,
-        @RequestBody renterRest: RenterREST
+        @RequestBody renterRest: RenterREST,
     ): RenterREST
 
     @PostMapping("/return/{bookId}")
     fun returnBook(
         @PathVariable("bookId") bookId: String,
-        @RequestBody renterRest: RenterREST
+        @RequestBody renterRest: RenterREST,
     ): RenterREST
-
 }

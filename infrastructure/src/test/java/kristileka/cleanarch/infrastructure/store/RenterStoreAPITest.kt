@@ -1,10 +1,7 @@
 package kristileka.cleanarch.infrastructure.store
 
-import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.domain.model.Renter
-import kristileka.cleanarch.infrastructure.models.BookEntity
 import kristileka.cleanarch.infrastructure.models.RenterEntity
-import kristileka.cleanarch.infrastructure.repository.BookRepository
 import kristileka.cleanarch.infrastructure.repository.RenterRepository
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach

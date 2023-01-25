@@ -1,7 +1,6 @@
 package kristileka.cleanarch.domain.model
 
-import kristileka.cleanarch.domain.model.Book
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class BookTest {

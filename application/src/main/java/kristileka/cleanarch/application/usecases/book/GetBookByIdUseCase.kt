@@ -5,10 +5,9 @@ import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.domain.service.BookService
 import org.springframework.stereotype.Component
 
-
 @Component
 class GetBookByIdUseCase(
-    val bookService: BookService
+    val bookService: BookService,
 ) :
     UseCase<GetBookByIdUseCase.Input, GetBookByIdUseCase.Output>() {
 

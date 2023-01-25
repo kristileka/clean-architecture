@@ -2,8 +2,7 @@ package kristileka.cleanarch.presentation.dto.renter
 
 import io.mockk.mockk
 import kristileka.cleanarch.presentation.dto.book.BookREST
-import kristileka.cleanarch.presentation.dto.book.BookRESTTest
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 

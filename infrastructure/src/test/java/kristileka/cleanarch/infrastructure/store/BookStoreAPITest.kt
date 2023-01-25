@@ -80,14 +80,15 @@ class BookStoreAPITest {
 
     @Test
     fun findAllByCategoryAndAuthor() {
-        val books = listOf(BookEntity().apply {
-            this.id = 1
-            this.name = "test"
-        })
+        val books = listOf(
+            BookEntity().apply {
+                this.id = 1
+                this.name = "test"
+            },
+        )
         Mockito.`when`(bookRepository.findByCategoryAndAuthorAndName("test", "", "")).thenReturn(books)
         val result = bookStoreAPI.findAllByCategoryAndAuthor("test", "", "")
         Assertions.assertEquals(books.size, result.size)
         Assertions.assertEquals(books.first().id, result.first().id)
     }
-
 }

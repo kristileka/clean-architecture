@@ -3,23 +3,17 @@ package kristileka.cleanarch.presentation.controller.renter.retrieval
 import io.mockk.every
 import io.mockk.mockk
 import kristileka.cleanarch.application.base.UseCaseInvoker
-import kristileka.cleanarch.application.usecases.book.GetAllBooksUseCase
-import kristileka.cleanarch.application.usecases.book.GetBookByIdUseCase
 import kristileka.cleanarch.application.usecases.renter.GetAllRentersUseCase
 import kristileka.cleanarch.application.usecases.renter.GetRenterByIdUseCase
-import kristileka.cleanarch.application.usecases.renter.RentBookUseCase
 import kristileka.cleanarch.domain.model.Book
 import kristileka.cleanarch.domain.model.RentedBook
 import kristileka.cleanarch.domain.model.Renter
-import kristileka.cleanarch.presentation.controller.renter.manage.RenterManageController
-import kristileka.cleanarch.presentation.mappers.RenterMapper.toREST
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
-import  org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Test
 
 internal class RenterRetrievalControllerTest {
-
 
     private val useCaseInvoker = mockk<UseCaseInvoker>()
     private val getAllRentersUseCase = mockk<GetAllRentersUseCase>()
@@ -29,7 +23,9 @@ internal class RenterRetrievalControllerTest {
     @BeforeEach
     fun init() {
         controller = RenterRetrievalController(
-            useCaseInvoker, getAllRentersUseCase, getRenterByIdUseCase
+            useCaseInvoker,
+            getAllRentersUseCase,
+            getRenterByIdUseCase,
         )
     }
 
@@ -43,7 +39,9 @@ internal class RenterRetrievalControllerTest {
         } returns output
 
         val controller = RenterRetrievalController(
-            useCaseInvoker, getAllRentersUseCase, getRenterByIdUseCase
+            useCaseInvoker,
+            getAllRentersUseCase,
+            getRenterByIdUseCase,
         )
 
         val result = controller.getAllRenters()
@@ -61,7 +59,6 @@ internal class RenterRetrievalControllerTest {
         every {
             useCaseInvoker.execute(getRenterByIdUseCase, any())
         } returns output
-
 
         val result = controller.getRenterById("1")
 

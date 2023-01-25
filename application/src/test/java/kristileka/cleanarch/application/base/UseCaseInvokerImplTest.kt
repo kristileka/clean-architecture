@@ -3,7 +3,7 @@ package kristileka.cleanarch.application.base
 import io.mockk.every
 import io.mockk.mockk
 import kristileka.cleanarch.application.base.impl.UseCaseInvokerImpl
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class UseCaseInvokerImplTest {

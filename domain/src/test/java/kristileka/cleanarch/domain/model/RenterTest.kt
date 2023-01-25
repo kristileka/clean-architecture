@@ -1,13 +1,9 @@
 package kristileka.cleanarch.domain.model
 
 import io.mockk.mockk
-import kristileka.cleanarch.domain.model.Book
-import kristileka.cleanarch.domain.model.RentedBook
-import kristileka.cleanarch.domain.model.Renter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
-
 
 class RenterTest {
     private val renterId = "1"
@@ -33,4 +29,3 @@ class RenterTest {
         assertEquals(rentedBooks, copiedRenter.rentedBooks)
     }
 }
-

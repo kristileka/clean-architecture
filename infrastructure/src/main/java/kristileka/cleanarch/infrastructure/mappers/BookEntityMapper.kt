@@ -1,7 +1,6 @@
 package kristileka.cleanarch.infrastructure.mappers
 
 import kristileka.cleanarch.domain.model.Book
-import kristileka.cleanarch.infrastructure.mappers.BookEntityMapper.toEntity
 import kristileka.cleanarch.infrastructure.models.BookEntity
 
 object BookEntityMapper {

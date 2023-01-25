@@ -16,7 +16,8 @@ FROM book b
   AND LOWER(bc.categories) LIKE LOWER(concat('%', ?1, '%'))
   WHERE LOWER(b.author) LIKE LOWER(concat('%', ?2, '%'))
   and LOWER(b.name) LIKE LOWER(concat('%',?3,'%'));
-""", nativeQuery = true
+""",
+        nativeQuery = true,
     )
     fun findByCategoryAndAuthorAndName(category: String, author: String, name: String): List<BookEntity>
     fun findByName(name: String): BookEntity?
